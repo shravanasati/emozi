@@ -30,7 +30,9 @@ checksum:
   name_template: 'checksums.txt'
 
 nfpms:
-
+  - id: emozi
+  - builds:
+    - emozi
   - package_name: emozi
   - file_name_template: "{{ .ConventionalFileName }}"
   - vendor: Shravan Asati
