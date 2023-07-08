@@ -16,7 +16,7 @@ from stdin as well as from the given arguments.
 visit "https://github.com/Shravan-1908/emozi".. for more information.
 `
 
-func main()  {
+func main() {
 	gen := emojipasta.New().WithDefaultMappings()
 
 	// Check if there is any input available in stdin
@@ -26,7 +26,7 @@ func main()  {
 
 		for scanner.Scan() {
 			input := scanner.Text()
-			fmt.Println(gen.GeneratePasta(input))
+			fmt.Println(gen.GenerateEmojiPasta(input))
 		}
 
 		if err := scanner.Err(); err != nil {
@@ -36,9 +36,9 @@ func main()  {
 		if len(os.Args) > 1 {
 			args := os.Args[1:]
 			text := strings.Join(args, " ")
-			fmt.Println(gen.GeneratePasta(text))
+			fmt.Println(gen.GenerateEmojiPasta(text))
 		} else {
-			fmt.Println(gen.GeneratePasta(helpText))
+			fmt.Println(gen.GenerateEmojiPasta(helpText))
 		}
 	}
 }
