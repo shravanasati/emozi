@@ -44,3 +44,33 @@ just👏 a simple❌ demonstration🎯
 ```
 
 The library [`emojipasta`](https://github.com/Shravan-1908/emozi/tree/main/emojipasta) has been extrapolated and can be used in any go application to generate emojipasta.
+
+## Installation
+
+### Using [eget](https://github.com/zyedidia/eget) (easiest)
+
+```
+eget Shravan-1908/emozi
+```
+OR
+```
+eget Shravan-1908/emozi --to location_on_path
+```
+
+### Using package managers
+
+#### Windows
+```
+wget https://github.com/Shravan-1908/emozi/releases/latest/download/emozi.json
+scoop install ./emozi.json
+```
+
+### Using Go Compiler
+Requires go>=1.20
+```
+go install github.com/Shravan-1908/emozi@latest
+```
+
+### Github Releases
+
+Download the archives, extract them and place the emozi binary on PATH.
