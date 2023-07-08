@@ -39,11 +39,7 @@ func (epg *Generator) GeneratePasta(text string) string {
 		newBlocks = append(newBlocks, b.String())
 	}
 
-	var final strings.Builder
-	for _, v := range newBlocks {
-		final.WriteString(v)
-	}
-	return final.String()
+	return strings.Join(newBlocks, "")
 }
 
 func (epg *Generator) generateEmojis(block string) []rune {
@@ -57,6 +53,9 @@ func (epg *Generator) generateEmojis(block string) []rune {
 
 	if len(matchingEmojis) > 0 {
 		numEmojis := gen.Intn(maxEmojisPerBlock) + 1
+		if numEmojis > len(matchingEmojis) {
+			numEmojis = len(matchingEmojis) - 1
+		}
 		for i := 0; i < numEmojis; i++ {
 			choice := matchingEmojis[gen.Intn(len(matchingEmojis))]
 			emojis = append(emojis, choice)
