@@ -1,6 +1,6 @@
 # emozi
 
-emozi is a simple command line tool to insert emojis in between text.
+emozi is a simple command line tool to generate emojipasta (copypasta but a lot of emojis).
 
 Inspired by the [EmojiPastaBot](https://github.com/Kevinpgalligan/EmojipastaBot) on reddit.
 
@@ -43,3 +43,4 @@ emozi just a simple demonstration
 just👏 a simple❌ demonstration🎯
 ```
 
+The library [`emojipasta`](https://github.com/Shravan-1908/emozi/tree/main/emojipasta) has been extrapolated and can be used in any go application to generate emojipasta.
