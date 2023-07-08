@@ -8,5 +8,6 @@ import (
 
 func main()  {
 	fmt.Println("lmao ded")
-	emojipasta.PrintMappings()
+	generator := emojipasta.New().WithDefaultMappings()
+	fmt.Println(generator.GeneratePasta("harry potter is just a weakling, he knows nothing but angry"))
 }
