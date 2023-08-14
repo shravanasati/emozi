@@ -61,7 +61,7 @@ eget Shravan-1908/emozi --to location_on_path
 
 #### Windows
 ```
-wget https://github.com/Shravan-1908/emozi/releases/latest/download/emozi.json
+curl.exe https://github.com/Shravan-1908/emozi/releases/latest/download/emozi.json -L -o emozi.json
 scoop install ./emozi.json
 ```
 
