@@ -4,6 +4,9 @@ emojipasta is a minimal library that can generate emojipasta from the given text
 
 This is the library which powers [emozi](https://github.com/Shravan-1908/emozi).
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/Shravan-1908/emozi/emojipasta.svg)](https://pkg.go.dev/github.com/Shravan-1908/emozi/emojipasta)
+
+
 ## Installation
 
 ```
@@ -31,6 +34,6 @@ func main() {
 	if err != nil {
 		...
 	}
-	generator.GenerateEmojiPasta("I just hope this works. No tests are available sorry.")
+	fmt.Println(generator.GenerateEmojiPasta("I just hope this works. No tests are available sorry."))
 }
 ```
