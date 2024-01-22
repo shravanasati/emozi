@@ -2,15 +2,15 @@
 
 emojipasta is a minimal library that can generate emojipasta from the given text.
 
-This is the library which powers [emozi](https://github.com/Shravan-1908/emozi).
+This is the library which powers [emozi](https://github.com/shravanasati/emozi).
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/Shravan-1908/emozi/emojipasta.svg)](https://pkg.go.dev/github.com/Shravan-1908/emozi/emojipasta)
+[![Go Reference](https://pkg.go.dev/badge/github.com/shravanasati/emozi/emojipasta.svg)](https://pkg.go.dev/github.com/shravanasati/emozi/emojipasta)
 
 
 ## Installation
 
 ```
-go get github.com/Shravan-1908/emozi/emojipasta
+go get github.com/shravanasati/emozi/emojipasta
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/Shravan-1908/emozi/emojipasta"
+	"github.com/shravanasati/emozi/emojipasta"
 )
 
 func main() {

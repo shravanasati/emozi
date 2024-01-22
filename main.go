@@ -6,13 +6,13 @@ import (
 	"os"
 	"strings"
 
-	"github.com/Shravan-1908/emozi/emojipasta"
+	"github.com/shravanasati/emozi/emojipasta"
 )
 
 const helpText = `
 emozi is a simple command line tool to generate emojipasta. it can read input from stdin as well as from the given arguments.
 
-visit "https://github.com/Shravan-1908/emozi".. for more information.
+visit "https://github.com/shravanasati/emozi".. for more information.
 `
 
 func main() {
