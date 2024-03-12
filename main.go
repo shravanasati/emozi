@@ -16,7 +16,11 @@ visit "https://github.com/shravanasati/emozi".. for more information.
 `
 
 func main() {
-	gen := emojipasta.New().WithDefaultMappings()
+	gen, err := emojipasta.NewBuilder().WithDefaultMappings().Build()
+	if err != nil {
+		fmt.Printf("fatal: unable to build the generator: %v\n", err)
+		return
+	}
 
 	// Check if there is any input available in stdin
 	stat, _ := os.Stdin.Stat()

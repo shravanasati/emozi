@@ -24,16 +24,18 @@ import (
 )
 
 func main() {
-	generator := emojipasta.New().WithDefaultMappings()
-	// you can also set your custom mappings
-	// generator := emojipasta.New().WithCustomMappings(myCustomMapping)
+	generator, err := emojipasta.NewBuilder().
+		WithDefaultMappings().
+		WithMaxEmojisPerBlock(3). // default max emojis per block is 2
+		Build()
 
-	// the default max emojis per block is set to 2
-	// you can change it as following
-	err := generator.SetMaxEmojisPerBlock(3)
 	if err != nil {
 		...
 	}
+
+	// you can also set your custom mappings
+	// generator, err := emojipasta.NewBuilder().WithCustomMappings(myCustomMapping)
+
 	fmt.Println(generator.GenerateEmojiPasta("I just hope this works. No tests are available sorry."))
 }
 ```

@@ -1,11 +1,13 @@
 package emojipasta
 
 import (
-	"fmt"
+	"errors"
 	"math/rand"
 	"strings"
 	"time"
 )
+
+var ErrNegativeEmojisPerBlock = errors.New("cannot set negative emojis per block")
 
 // Generator holds the emoji mappings and the number of max emojis per block.
 type Generator struct {
@@ -13,32 +15,62 @@ type Generator struct {
 	maxEmojisPerBlock int
 }
 
+// GeneratorBuilder is used to build the Generator.
+type GeneratorBuilder struct {
+	generator *Generator
+	err       error
+}
+
 // Returns a pointer to a Generator struct with maxEmojisPerBlock set to 2.
-func New() *Generator {
-	return &Generator{maxEmojisPerBlock: 2}
+func NewBuilder() *GeneratorBuilder {
+	// using the builder pattern here
+	// if the error is not nil, all subsequent calls to building methods
+	// will return early, while ensuring safe chaining
+	return &GeneratorBuilder{
+		err: nil,
+		generator: &Generator{maxEmojisPerBlock: 2},
+	}
 }
 
 // Sets Generator.mappings to the default emoji mappings.
-func (epg *Generator) WithDefaultMappings() *Generator {
-	epg.mappings = emojiMappings
-	return epg
+func (builder *GeneratorBuilder) WithDefaultMappings() *GeneratorBuilder {
+	if builder.err != nil {
+		return builder
+	}
+	builder.generator.mappings = emojiMappings
+	return builder
 }
 
 // Sets Generator.mappings to the given custom mappings.
 // Example of a custom mapping is {"hi": ["✋", "👋"], "person": ["👦", "🧔"]...}
-func (epg *Generator) WithCustomMappings(customMapping map[string][]string) *Generator {
-	epg.mappings = processMapping(customMapping)
-	return epg
+func (builder *GeneratorBuilder) WithCustomMappings(customMapping map[string][]string) *GeneratorBuilder {
+	if builder.err != nil {
+		return builder
+	}
+	builder.generator.mappings = processMapping(customMapping)
+	return builder
 }
 
-// Sets Generator.maxEmojisPerBlock to the given number. Returns an error is the given
-// number is negative.
-func (epg *Generator) SetMaxEmojisPerBlock(n int) error {
-	if n < 0 {
-		return (fmt.Errorf("cannot set negative max emoji per block: %d", n))
+// Sets Generator.maxEmojisPerBlock to the given number. Call to the build method will return an
+// error is the given number is negative.
+func (builder *GeneratorBuilder) WithMaxEmojisPerBlock(n int) *GeneratorBuilder {
+	if builder.err != nil {
+		return builder
 	}
-	epg.maxEmojisPerBlock = n
-	return nil
+	if n < 0 {
+		builder.err = ErrNegativeEmojisPerBlock
+		return builder
+	}
+	builder.generator.maxEmojisPerBlock = n
+	return builder
+}
+
+// Returns the generator if no errors were encountered during the building process (adding options).
+func (builder *GeneratorBuilder) Build() (*Generator, error) {
+	if builder.err != nil {
+		return nil, builder.err
+	}
+	return builder.generator, nil
 }
 
 // Generates the emoji pasta from the given text.
